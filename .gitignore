@@ -1,0 +1,10 @@
+# Generated output files
+filtered_result.csv
+
+# Compiled binaries
+*.exe
+*.out
+filter
+
+# Build directory
+/bin/
