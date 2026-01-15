@@ -13,10 +13,10 @@ Atau untuk Linux/Mac:
 go build -o filter ./cmd/filter
 ```
 
-## Usage
+## Run
 
 ```bash
-filter -d <directory> -s <start> -e <end>
+./filter -d <directory> -s <start> -e <end>
 ```
 
 ### Arguments
@@ -30,7 +30,13 @@ filter -d <directory> -s <start> -e <end>
 ### Contoh
 
 ```bash
-filter -d ./data -s 2025-06-28T00:00:00+07:00 -e 2025-07-03T00:00:00+07:00
+./filter -d ./data -s 2025-06-28T00:00:00+07:00 -e 2025-07-03T00:00:00+07:00
+```
+
+## Test
+
+```bash
+go test ./...
 ```
 
 ## Output
@@ -42,6 +48,8 @@ filter -d ./data -s 2025-06-28T00:00:00+07:00 -e 2025-07-03T00:00:00+07:00
 
 File hasil filter disimpan di **current working directory** dengan nama `filtered_result.csv`.
 Jika file sudah ada, akan di-**overwrite**.
+
+> **Note**: File output (`filtered_result.csv`) dan binary hasil build (`*.exe`, `filter`) tidak disimpan ke repository. File-file ini di-generate saat build/run dan sudah ditambahkan ke `.gitignore`.
 
 ## Format CSV
 
@@ -64,12 +72,6 @@ Format sama persis dengan input (tanpa header).
 - File diurutkan berdasarkan numeric prefix (1_report.csv, 2_report.csv, dst)
 - Streaming read (line per line, tidak load seluruh file ke memory)
 - Early termination: berhenti memproses saat menemukan `TrxDate >= end`
-
-## Run Tests
-
-```bash
-go test ./...
-```
 
 ## Project Structure
 
